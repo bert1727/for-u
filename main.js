@@ -1,12 +1,12 @@
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
-const windowWidth = window.innerWidth - 30;
-const windowHeight = window.innerHeight - 30;
+const windowWidth = window.innerWidth - 100;
+const windowHeight = window.innerHeight - 100;
 const currentFontSize = window.getComputedStyle(yesBtn).fontSize;
 const header = document.getElementById("header");
 
 const pls = [
-  "ладно больше нет вариантов",
+  "думаю, придётся передумать",
   "да ну передумай",
   "может передумаешь?",
   "прям точно, точно?",
@@ -15,8 +15,8 @@ const pls = [
 ];
 if (!detectMob()) {
   noBtn.addEventListener("mouseenter", function (e) {
-    e.target.style.left = `${Math.max(0, Math.random() * (windowWidth - noBtn.offsetWidth))}px`;
-    e.target.style.top = `${Math.max(0, Math.random() * (windowHeight - noBtn.offsetHeight))}px`;
+    e.target.style.left = `${Math.max(0, Math.random() * (windowWidth - e.target.offsetWidth))}px`;
+    e.target.style.top = `${Math.max(0, Math.random() * (windowHeight - e.target.offsetHeight))}px`;
 
     if (noBtn.offsetHeight < 50) {
       noBtn.hidden = true;
@@ -44,11 +44,17 @@ if (!detectMob()) {
     if (!pls.length) {
       noBtn.hidden = true;
       yesBtn.style.width = "70%";
-      yesBtn.style.marginRight = "0";
+
       yesBtn.style.marginLeft = "15%";
+      yesBtn.style.marginRight = "15%";
+
+      // yesBtn.textContent = "ДАДАДАДАДА";
+      yesBtn.textContent = "ДАААА!!!";
+      yesBtn.style.color = "red";
     }
 
     noBtn.textContent = pls.pop();
+    noBtn.style.color = "#E0115F";
   });
 }
 
